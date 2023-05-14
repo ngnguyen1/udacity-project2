@@ -13,7 +13,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Use the body parser middleware for post requests
   app.use(bodyParser.json());
 
-  app.get("/filteredimage", async (req, res) => {
+  app.get("/filteredimage", async (req: express.Request, res: express.Response) => {
     const { image_url } = req.query;
 
     if ( !image_url) {
@@ -26,7 +26,8 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       res.status(200).sendFile(result_image);
     }
     catch (error) {
-      res.status(400).send(`Error occured: ${error.message}`);
+      console.log(error);
+      res.status(422).send(`Error occured: ${error.message}`);
     }
   })
 
