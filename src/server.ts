@@ -26,7 +26,8 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       res.status(200).sendFile(result_image);
     }
     catch (error) {
-      res.status(400).send(`Error occured: ${error.message}`);
+      console.log(error);
+      res.status(422).send(`Error occured: ${error.message}`);
     }
   })
 
